@@ -12,6 +12,14 @@ The front page leads with **COP31 COLLAPSES** — the UN climate summit in Turke
 
 ![entry](entry.png)
 
+## The stories on the page
+
+1. **COP31 COLLAPSES** — the UN climate summit in Turkey ended with no agreement to phase out coal, oil and gas, leaving the 1.5°C goal in doubt.
+2. **SHIPS STRUCK IN HORMUZ** — three more tankers were hit in the Strait of Hormuz as attacks reached their fastest pace since February.
+3. **STUDENTS TAKE TO EUROPE'S STREETS** — student-led protests and strikes swept Europe, from Rome to Paris, Berlin and Warsaw.
+4. **UKRAINE RETAKES 200 SQ KM** — Ukrainian forces reported liberating about 200 square kilometres near Kharkiv in operation "Bear Trap".
+5. **MARKETS REBOUND AFTER SELLOFF** — stocks recovered after the previous week's rout.
+
 ## How it works
 
 `main.py` copies the bundled `entry.png` (1024x1024, under 1 MiB) to `/output/entry.png` and verifies the copy byte-for-byte with SHA-256. No network, no randomness: two runs write identical bytes.

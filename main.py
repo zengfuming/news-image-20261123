@@ -1,8 +1,12 @@
 """Write 23 November 2026's world news as one image to /output/entry.png.
 
-The entry image is bundled in this repository as entry.png (a 1024x1024
-newspaper front page). This program copies it to the output path, verifies
-the copy byte-for-byte with SHA-256, and does nothing else: no network, no
+The entry image is bundled in this repository as entry.png: a 1024x1024
+newspaper front page whose lead story is the collapse of COP31, with the
+Strait of Hormuz ship strikes, Europe's student protests, Ukraine's
+advance near Kharkiv, and the market rebound after the selloff.
+
+This program copies entry.png to the output path and verifies the copy
+byte-for-byte with SHA-256. It does nothing else: no network, no
 randomness, so two runs write identical bytes.
 
 Run: python3 main.py  (MAKEFUN_OUTPUT_DIR defaults to /output)
@@ -13,11 +17,13 @@ import os
 import shutil
 import sys
 
+# Read the source image in 64 KiB chunks when hashing it.
 CHUNK_SIZE = 65536
 SOURCE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "entry.png")
 
 
 def sha256_of(path):
+    """Return the hex SHA-256 digest of the file at path."""
     digest = hashlib.sha256()
     with open(path, "rb") as handle:
         while True:
@@ -30,6 +36,8 @@ def sha256_of(path):
 
 def main():
     if not os.path.isfile(SOURCE):
+        # The program is only a copier: without the bundled image there
+        # is nothing to write, so fail loudly instead of writing a blank.
         print("entry.png is missing from the repository", file=sys.stderr)
         return 1
 
